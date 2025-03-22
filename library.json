@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+  "name": "TamanduContext",
+  "version": "1.0.0",
+  "description": "Manage data shared by parallel processes in your embedded device.",
+  "keywords": "data, input, output, context, task, thread, memory, storage",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tamandutech/TamanduContext"
+  },
+  "authors": [
+    {
+      "name": "Alexandre Hiroyuki",
+      "email": "alex.hiroyuki@outlook.com",
+      "url": "https://github.com/AlexandreHiroyuki",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Tamandutech/TamanduContext",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "headers": ["TamanduContext.h"],
+  "examples": [],
+  "export": {
+    "exclude": [
+      "test/",
+      ".github",
+      ".gitignore",
+      ".vscode",
+      "build_test.cpp",
+      "docs/icon.png"
+    ]
+  },
+  "srcDir": "src"
+}

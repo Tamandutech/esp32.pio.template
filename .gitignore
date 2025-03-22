@@ -1,0 +1,19 @@
+.DS_Store
+
+# Visual Studio project configurations
+.vscode/*
+/.vs
+
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Compilation output
+/out
+bin/
+build/
+.idea/
+CMakeSettings.json
+
+# PlatformIO
+.pio/
+compile_commands.json
