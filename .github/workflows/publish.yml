@@ -5,6 +5,10 @@ on:
     types: [released]
   workflow_call:
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   pio-publish:
     runs-on: ubuntu-latest

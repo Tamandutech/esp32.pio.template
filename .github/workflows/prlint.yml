@@ -1,6 +1,9 @@
 name: Pull Request Message Validation
 on: pull_request
 
+permissions:
+  pull-requests: read
+
 jobs:
   prlint:
     runs-on: ubuntu-latest
