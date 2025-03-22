@@ -1,12 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
-  "name": "TamanduContext",
+  "name": "platformio.cpp.dx.template",
   "version": "1.0.0",
-  "description": "Manage data shared by parallel processes in your embedded device.",
-  "keywords": "data, input, output, context, task, thread, memory, storage",
+  "description": "Template with developer experience setup. PlatformIO + Cpp + CI/CD + Linter + Formatter.",
+  "keywords": "platformio, cpp, dx, template, developer, experience, setup, ci, cd, linter, formatter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tamandutech/TamanduContext"
+    "url": "https://github.com/Tamandutech/platformio.cpp.dx.template"
   },
   "authors": [
     {
@@ -17,10 +17,10 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Tamandutech/TamanduContext",
-  "frameworks": "arduino",
+  "homepage": "https://github.com/Tamandutech/platformio.cpp.dx.template",
+  "frameworks": "*",
   "platforms": "*",
-  "headers": ["TamanduContext.h"],
+  "headers": [],
   "examples": [],
   "export": {
     "exclude": [
