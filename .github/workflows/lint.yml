@@ -1,6 +1,6 @@
 name: C++ Linter
 
-on: push
+on: [push, pull_request]
 
 permissions:
   contents: read
@@ -36,4 +36,9 @@ jobs:
           tidy-checks: ""
           database: compile_commands.json
           files-changed-only: true
+          no-lgtm: false
+          step-summary: true
+          file-annotations: true
+          tidy-review: true
+          format-review: true
           thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
