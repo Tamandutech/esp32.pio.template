@@ -13,7 +13,7 @@ void setup() {
   UselessData::random_float  = 20.0f;
   UselessData::random_bool   = true;
 
-  myTask = new MyTask(UselessData::random_number);
+  myTask =      new MyTask(UselessData::random_number);
   myTask->loop();
 
   Storage::write(UselessData::random_number);
