@@ -33,3 +33,11 @@ KeepEmptyLines:
   AtStartOfBlock: false
   AtStartOfFile: false
 MaxEmptyLinesToKeep: 2
+PointerAlignment: Right
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: Never
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpaceInEmptyParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
