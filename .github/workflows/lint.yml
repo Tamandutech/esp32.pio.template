@@ -1,9 +1,6 @@
 name: C++ Linter
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 permissions:
   contents: read
