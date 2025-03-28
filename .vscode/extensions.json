@@ -5,7 +5,8 @@
     "ms-vscode.cpptools-extension-pack",
     "platformio.platformio-ide",
     "trunk.io",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "pkief.material-icon-theme"
   ],
   "unwantedRecommendations": ["ms-vscode.cpptools-extension-pack"]
 }
