@@ -2,6 +2,8 @@
 
 Template with developer experience setup. PlatformIO + Cpp + CI/CD + Linter + Formatter.
 
+> If the codebase using this template is not a library, remove the `library.json` file and the `.github/workflows/publish.yml` file.
+
 ## Getting Started
 
 1. Clone the repository
