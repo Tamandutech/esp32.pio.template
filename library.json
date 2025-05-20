@@ -1,12 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
-  "name": "platformio.cpp.dx.template",
+  "name": "esp32.pio.template",
   "version": "1.0.0",
   "description": "Template with developer experience setup. PlatformIO + Cpp + CI/CD + Linter + Formatter.",
   "keywords": "platformio, cpp, dx, template, developer, experience, setup, ci, cd, linter, formatter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tamandutech/platformio.cpp.dx.template"
+    "url": "https://github.com/Tamandutech/esp32.pio.template"
   },
   "authors": [
     {
@@ -17,7 +17,7 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Tamandutech/platformio.cpp.dx.template",
+  "homepage": "https://github.com/Tamandutech/esp32.pio.template",
   "frameworks": "*",
   "platforms": "*",
   "headers": [],
