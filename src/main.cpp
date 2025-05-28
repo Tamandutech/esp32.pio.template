@@ -13,13 +13,11 @@ void setup() {
   UselessData::random_float  = 20.0f;
   UselessData::random_bool   = true;
 
-  myTask = new MyTask(UselessData::random_number);
-  myTask->loop();
-
   Storage::write(UselessData::random_number);
   Storage::write(UselessData::random_char);
   Storage::write(UselessData::random_float);
   Storage::write(UselessData::random_bool);
-}
 
-void loop() {}
+  myTask = new MyTask(UselessData::random_number);
+  myTask->loop();
+}
