@@ -32,8 +32,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # style: file
-          tidy-checks: ""
+          style: 'file'
+          tidy-checks: ''
           database: compile_commands.json
           files-changed-only: true
           no-lgtm: false
@@ -41,4 +41,4 @@ jobs:
           file-annotations: true
           tidy-review: true
           format-review: true
-          thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
+          thread-comments: 'update'

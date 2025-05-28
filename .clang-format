@@ -5,7 +5,7 @@ AlignAfterOpenBracket: Align
 AlignArrayOfStructures: Left
 AlignConsecutiveAssignments: AcrossComments
 AlignConsecutiveBitFields: AcrossComments
-AlignConsecutiveDeclarations: AcrossComments
+AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: AcrossComments
 AlignConsecutiveTableGenBreakingDAGArgColons: AcrossComments
 AlignConsecutiveTableGenCondOperatorColons: AcrossComments

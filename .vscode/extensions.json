@@ -1,12 +1,10 @@
 {
-  // See http://go.microsoft.com/fwlink/?LinkId=827846
-  // for the documentation about the extensions.json format
-  "recommendations": [
-    "ms-vscode.cpptools-extension-pack",
-    "pkief.material-icon-theme",
-    "platformio.platformio-ide",
-    "trunk.io",
-    "vivaxy.vscode-conventional-commits"
-  ],
-  "unwantedRecommendations": ["ms-vscode.cpptools-extension-pack"]
+    // See http://go.microsoft.com/fwlink/?LinkId=827846
+    // for the documentation about the extensions.json format
+    "recommendations": [
+        "ms-vscode.cpptools-extension-pack",
+        "pkief.material-icon-theme",
+        "platformio.platformio-ide",
+        "vivaxy.vscode-conventional-commits"
+    ]
 }

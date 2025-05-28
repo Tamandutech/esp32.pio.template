@@ -49,7 +49,6 @@
     "cinttypes": "cpp",
     "typeinfo": "cpp"
   },
-  "conventionalCommits.scopes": ["readme", "library_metadata"],
   "editor.tabSize": 2,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -57,7 +56,7 @@
   "C_Cpp.codeAnalysis.clangTidy.enabled": true,
   "C_Cpp.codeAnalysis.clangTidy.config": ".clang-tidy",
   "C_Cpp.formatting": "clangFormat",
-  "[jsonc]": {
-    "editor.defaultFormatter": "trunk.io"
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
   }
 }
