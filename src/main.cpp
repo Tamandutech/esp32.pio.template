@@ -1,23 +1,30 @@
 // Context
+#include "context/RobotEnv.hpp"
 #include "context/UselessData.hpp"
 // Non-volatile storage
 #include "storage/storage.hpp"
 // Tasks
-#include "tasks/MyTask.hpp"
+#include "tasks/CommunicationTask/CommunicationTask.hpp"
+#include "tasks/MainTask/MainTask.hpp"
 
-MyTask *myTask;
+MainTask *mainTask;
+CommunicationTask *communicationTask;
+UselessData uselessData;
 
 void setup() {
-  UselessData::random_number = 10;
-  UselessData::random_char   = 'b';
-  UselessData::random_float  = 20.0f;
-  UselessData::random_bool   = true;
+  uselessData.random_number.store(10, std::memory_order_relaxed);
+  uselessData.random_char.store('b', std::memory_order_relaxed);
+  uselessData.random_float.store(20.0f, std::memory_order_relaxed);
+  uselessData.random_bool.store(true, std::memory_order_relaxed);
 
-  Storage::write(UselessData::random_number);
-  Storage::write(UselessData::random_char);
-  Storage::write(UselessData::random_float);
-  Storage::write(UselessData::random_bool);
+  Storage::write(uselessData.random_number.load(std::memory_order_relaxed));
+  Storage::write(uselessData.random_char.load(std::memory_order_relaxed));
+  Storage::write(uselessData.random_float.load(std::memory_order_relaxed));
+  Storage::write(uselessData.random_bool.load(std::memory_order_relaxed));
 
-  myTask = new MyTask(UselessData::random_number);
-  myTask->loop();
+  communicationTask = new CommunicationTask(uselessData);
+  communicationTask->loop();
+
+  mainTask = new MainTask(uselessData);
+  mainTask->loop();
 }
