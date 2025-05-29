@@ -3,6 +3,10 @@
 
 #include "context/UselessData.hpp"
 
+#include "drivers/MotorDriver/MotorDriver.hpp"
+
+#include "tasks/MainTask/SpeedControl/SpeedControl.hpp"
+
 class MainTask {
 public:
   MainTask(UselessData &data);
@@ -11,9 +15,14 @@ public:
 
 private:
   UselessData &data;
+  MotorDriver *motorDriver;
+  SpeedControl *speedControl;
 };
 
-MainTask::MainTask(UselessData &data) : data(data) {}
+MainTask::MainTask(UselessData &data) : data(data) {
+  motorDriver  = new MotorDriver(data);
+  speedControl = new SpeedControl(data);
+}
 
 void MainTask::loop() {}
 
