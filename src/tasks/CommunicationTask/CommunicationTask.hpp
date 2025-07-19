@@ -3,18 +3,16 @@
 
 #include "context/UselessData.hpp"
 
-class CommunicationTask {
-public:
-  CommunicationTask(UselessData &data);
-
-  void loop();
-
-private:
-  UselessData &data;
+struct CommunicationTaskParamSchema {
+  UselessData &uselessData;
 };
 
-CommunicationTask::CommunicationTask(UselessData &data) : data(data) {}
+void communicationTaskLoop(void *params) {
+  CommunicationTaskParamSchema *param = (CommunicationTaskParamSchema *)params;
 
-void CommunicationTask::loop() {}
+  for(;;) {
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+  }
+}
 
 #endif // COMMUNICATION_TASK_HPP

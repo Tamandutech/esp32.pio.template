@@ -47,7 +47,17 @@
     "stdexcept": "cpp",
     "streambuf": "cpp",
     "cinttypes": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "span": "cpp",
+    "bit": "cpp",
+    "charconv": "cpp",
+    "compare": "cpp",
+    "concepts": "cpp",
+    "set": "cpp",
+    "format": "cpp",
+    "numbers": "cpp",
+    "text_encoding": "cpp",
+    "variant": "cpp"
   },
   "editor.tabSize": 2,
   "editor.formatOnPaste": true,

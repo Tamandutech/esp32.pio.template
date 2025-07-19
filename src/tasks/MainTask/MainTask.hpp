@@ -5,25 +5,25 @@
 
 #include "drivers/MotorDriver/MotorDriver.hpp"
 
-#include "tasks/MainTask/SpeedControl/SpeedControl.hpp"
+#include "tasks/MainTask/PathController/PathController.hpp"
 
-class MainTask {
-public:
-  MainTask(UselessData &data);
-
-  void loop();
-
-private:
-  UselessData &data;
-  MotorDriver *motorDriver;
-  SpeedControl *speedControl;
+struct MainTaskParamSchema {
+  UselessData &uselessData;
 };
 
-MainTask::MainTask(UselessData &data) : data(data) {
-  motorDriver  = new MotorDriver(data);
-  speedControl = new SpeedControl(data);
-}
+void mainTaskLoop(void *params) {
+  MainTaskParamSchema *param = (MainTaskParamSchema *)params;
+  MotorDriver *motorDriver   = new MotorDriver(param->uselessData);
 
-void MainTask::loop() {}
+  PathControllerParamSchema pathControllerParam = {
+      .sensor_quantity = 4,
+      .constants       = {.kP = 0.1, .kI = 0.01, .kD = 0.001},
+  };
+  PathController *pathController = new PathController(pathControllerParam);
+
+  for(;;) {
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+  }
+}
 
 #endif // MAIN_TASK_HPP
