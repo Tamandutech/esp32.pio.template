@@ -30,4 +30,4 @@ jobs:
       - name: Run Tests on the Desktop Environment
         run: platformio test -e desktop
       - name: Run Build Test for ESP32 Dev Module
-        run: platformio run -e esp32dev
+        run: platformio run -e esp32

@@ -34,5 +34,5 @@ Look at the `.vscode/extensions.json` file to see the recommended extensions.
 
 ```bash
 pio install
-pio run -e esp32dev --target compiledb
+pio run -e esp32 --target compiledb
 ```

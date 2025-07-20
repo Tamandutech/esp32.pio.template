@@ -25,7 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install platformio
       - name: Build Compilation Database
-        run: platformio run -e esp32dev --target compiledb
+        run: platformio run -e esp32 --target compiledb
       - uses: cpp-linter/cpp-linter-action@main
         id: linter
         continue-on-error: true
