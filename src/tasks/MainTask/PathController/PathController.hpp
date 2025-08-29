@@ -20,24 +20,33 @@ class PathController {
 public:
   PathController(PathControllerParamSchema &param);
 
-  void getLinePosition();
-  void getLineAngle();
-  void getPID();
+  float getLinePosition();
+  float getLineAngle();
+  float getPID();
 
 private:
   const int sensor_quantity;
   PathControllerConstants constants;
 
   float integralSummation;
+  float lastError;
 };
 
 PathController::PathController(PathControllerParamSchema &param)
-    : constants(param.constants), sensor_quantity(param.sensor_quantity) {}
+    : constants(param.constants), sensor_quantity(param.sensor_quantity),
+      integralSummation(0.0f), lastError(0.0f) {}
 
-void PathController::getLinePosition() {}
+float PathController::getLinePosition() { return 0.0f; }
 
-void PathController::getLineAngle() {}
+float PathController::getLineAngle() { return 0.0f; }
 
-void PathController::getPID() {}
+float PathController::getPID() {
+  float error = getLineAngle();
+  integralSummation += error;
+  float derivative = error - lastError;
+  lastError        = error;
+  return constants.kP * error + constants.kI * integralSummation +
+         constants.kD * derivative;
+}
 
 #endif // PATH_CONTROLLER_HPP
