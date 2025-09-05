@@ -169,9 +169,14 @@ float PathController::getLineAngle() {
   float denominator = cosf(angleRadius) - 1.0F +
                       (static_cast<float>(sensorToCenter_) / radiusSensor_);
 
-  // Evita divisão por zero
+  // Evita divisão por zero - retorna ângulo máximo quando o denominador é muito
+  // pequeno
   if(fabsf(denominator) < RobotEnv::EPSILON_TOLERANCE) {
-    return 0.0F;
+    // Quando o denominador é próximo de zero, o robô está em uma posição
+    // extrema Retorna o ângulo máximo com sinal baseado na posição para manter
+    // controle
+    return (position >= 0) ? maxAngle_ * 180.0F / M_PI
+                           : -maxAngle_ * 180.0F / M_PI;
   }
 
   float angleWithCenter = atanf(sinf(angleRadius) / denominator);
