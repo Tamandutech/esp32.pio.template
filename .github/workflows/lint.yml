@@ -10,7 +10,7 @@ jobs:
   cpp-linter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/cache@v4
         with:
           path: |
@@ -26,6 +26,16 @@ jobs:
           pip install platformio
       - name: Build Compilation Database
         run: platformio run -e esp32 --target compiledb
+      - name: Check clang-format syntax
+        run: |
+          # Verifica se o arquivo .clang-format é válido
+          clang-format --style=file --dump-config > /dev/null
+          echo "clang-format configuration is valid"
+      - name: Fix line endings
+        run: |
+          # Converte line endings para LF (Unix) para evitar problemas com clang-format
+          find src/ -name "*.hpp" -o -name "*.cpp" | xargs dos2unix
+          echo "Line endings converted to LF"
       - uses: cpp-linter/cpp-linter-action@main
         id: linter
         continue-on-error: true

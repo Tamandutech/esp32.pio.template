@@ -12,12 +12,12 @@ struct MainTaskParamSchema {
 };
 
 void mainTaskLoop(void *params) {
-  MainTaskParamSchema *param = (MainTaskParamSchema *)params;
+  MainTaskParamSchema *param = static_cast<MainTaskParamSchema *>(params);
   MotorDriver *motorDriver   = new MotorDriver(param->uselessData);
 
   PathControllerParamSchema pathControllerParam = {
-      .sensor_quantity = 4,
-      .constants       = {.kP = 0.1, .kI = 0.01, .kD = 0.001},
+      .sensorQuantity = 4,
+      .constants      = {.kP = 0.1, .kI = 0.01, .kD = 0.001},
   };
   PathController *pathController = new PathController(pathControllerParam);
 

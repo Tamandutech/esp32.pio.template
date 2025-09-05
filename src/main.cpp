@@ -21,15 +21,15 @@ void app_main(void);
 }
 
 void app_main() {
-  uselessData.random_number.store(10, std::memory_order_relaxed);
-  uselessData.random_char.store('b', std::memory_order_relaxed);
-  uselessData.random_float.store(20.0f, std::memory_order_relaxed);
-  uselessData.random_bool.store(true, std::memory_order_relaxed);
+  uselessData.randomNumber.store(10, std::memory_order_relaxed);
+  uselessData.randomChar.store('b', std::memory_order_relaxed);
+  uselessData.randomFloat.store(20.0F, std::memory_order_relaxed);
+  uselessData.randomBool.store(true, std::memory_order_relaxed);
 
-  Storage::write(uselessData.random_number.load(std::memory_order_relaxed));
-  Storage::write(uselessData.random_char.load(std::memory_order_relaxed));
-  Storage::write(uselessData.random_float.load(std::memory_order_relaxed));
-  Storage::write(uselessData.random_bool.load(std::memory_order_relaxed));
+  Storage::write(uselessData.randomNumber.load(std::memory_order_relaxed));
+  Storage::write(uselessData.randomChar.load(std::memory_order_relaxed));
+  Storage::write(uselessData.randomFloat.load(std::memory_order_relaxed));
+  Storage::write(uselessData.randomBool.load(std::memory_order_relaxed));
 
   MainTaskParamSchema mainTaskParam                   = {uselessData};
   CommunicationTaskParamSchema communicationTaskParam = {uselessData};

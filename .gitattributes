@@ -1,0 +1,18 @@
+# Configuração de line endings para arquivos C++
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+
+# Configuração para arquivos de configuração
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Configuração para arquivos de projeto
+platformio.ini text eol=lf
+.clang-format text eol=lf
+.clang-tidy text eol=lf
+.gitattributes text eol=lf

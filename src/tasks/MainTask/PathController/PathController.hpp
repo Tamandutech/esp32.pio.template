@@ -12,7 +12,7 @@ struct PathControllerConstants {
 };
 
 struct PathControllerParamSchema {
-  const int sensor_quantity;
+  const int sensorQuantity;
   const PathControllerConstants constants;
 };
 
@@ -25,28 +25,28 @@ public:
   float getPID();
 
 private:
-  const int sensor_quantity;
-  PathControllerConstants constants;
+  const int sensorQuantity_;
+  PathControllerConstants constants_;
 
-  float integralSummation;
-  float lastError;
+  float integralSummation_;
+  float lastError_;
 };
 
 PathController::PathController(PathControllerParamSchema &param)
-    : constants(param.constants), sensor_quantity(param.sensor_quantity),
-      integralSummation(0.0f), lastError(0.0f) {}
+    : constants_(param.constants), sensorQuantity_(param.sensorQuantity),
+      integralSummation_(0.0F), lastError_(0.0F) {}
 
-float PathController::getLinePosition() { return 0.0f; }
+float PathController::getLinePosition() { return 0.0F; }
 
-float PathController::getLineAngle() { return 0.0f; }
+float PathController::getLineAngle() { return 0.0F; }
 
 float PathController::getPID() {
   float error = getLineAngle();
-  integralSummation += error;
-  float derivative = error - lastError;
-  lastError        = error;
-  return constants.kP * error + constants.kI * integralSummation +
-         constants.kD * derivative;
+  integralSummation_ += error;
+  float derivative = error - lastError_;
+  lastError_       = error;
+  return constants_.kP * error + constants_.kI * integralSummation_ +
+         constants_.kD * derivative;
 }
 
 #endif // PATH_CONTROLLER_HPP

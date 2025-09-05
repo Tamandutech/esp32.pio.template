@@ -11,10 +11,10 @@ public:
   int32_t getPulse();
 
 private:
-  UselessData &data;
+  UselessData &data_;
 };
 
-MotorDriver::MotorDriver(UselessData &data) : data(data) {}
+MotorDriver::MotorDriver(UselessData &data) : data_(data) {}
 
 void MotorDriver::pwmOutput(int32_t value) {}
 
