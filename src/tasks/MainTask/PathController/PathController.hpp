@@ -27,7 +27,7 @@ struct PathControllerConstants {
  */
 struct PathControllerParamSchema {
   const PathControllerConstants constants; // Constantes do controlador PID
-  const int sensorQuantity;                // Quantidade de sensores de linha
+  const size_t sensorQuantity;             // Quantidade de sensores de linha
   const int *sensorValues;       // Ponteiro para array de valores dos sensores
   const float maxAngle;          // Ângulo máximo em graus
   const uint16_t radiusSensor;   // Raio dos sensores
@@ -186,14 +186,26 @@ float PathController::getLineAngle() {
  * Implementa um controlador PID (Proporcional-Integral-Derivativo) para
  * calcular a correção necessária nos motores baseada no erro de posição.
  * O erro é calculado como o ângulo de desvio da linha.
+ * Inclui proteção contra integral windup para evitar saturação.
  *
  * @return Valor de correção para os motores (normalizado)
  */
 float PathController::getPID() {
   float error = getLineAngle();
+
+  // Adiciona o erro ao termo integral
   integralSummation_ += error;
+
+  // Aplica proteção contra integral windup
+  if(integralSummation_ > RobotEnv::INTEGRAL_MAX) {
+    integralSummation_ = RobotEnv::INTEGRAL_MAX;
+  } else if(integralSummation_ < RobotEnv::INTEGRAL_MIN) {
+    integralSummation_ = RobotEnv::INTEGRAL_MIN;
+  }
+
   float derivative = error - lastError_;
   lastError_       = error;
+
   return constants_.kP * error + constants_.kI * integralSummation_ +
          constants_.kD * derivative;
 }
