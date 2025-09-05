@@ -26,12 +26,12 @@ struct PathControllerConstants {
  * sensores.
  */
 struct PathControllerParamSchema {
+  const int sensorQuantity; // Quantidade de sensores de linha
+  const int *sensorValues;  // Ponteiro para array de valores dos sensores
   const PathControllerConstants constants; // Constantes do controlador PID
-  const int sensorQuantity;                // Quantidade de sensores de linha
-  int *sensorValues;             // Ponteiro para array de valores dos sensores
-  const float maxAngle;          // Ângulo máximo em graus
-  const uint16_t radiusSensor;   // Raio dos sensores
-  const uint16_t sensorToCenter; // Distância do sensor ao centro
+  const float maxAngle;                    // Ângulo máximo em graus
+  const uint16_t radiusSensor;             // Raio dos sensores
+  const uint16_t sensorToCenter;           // Distância do sensor ao centro
 };
 
 /**
@@ -53,7 +53,7 @@ public:
 
 private:
   const size_t sensorQuantity_; // Quantidade de sensores de linha
-  int *sensorValues_;           // Ponteiro para array de valores dos sensores
+  const int *sensorValues_;     // Ponteiro para array de valores dos sensores
   PathControllerConstants constants_; // Constantes do controlador PID
 
   // Parâmetros geométricos para cálculo do ângulo
@@ -103,13 +103,10 @@ float PathController::getLinePosition() {
   uint32_t avg = 0; // soma ponderada das leituras
   uint32_t sum = 0; // soma das leituras
 
-  // Simula leituras dos sensores (substituir por lógica real de leitura dos
-  // sensores)
-  for(int i = 0; i < sensorQuantity_; i++) {
-    // Este é um placeholder - substituir por leitura real do sensor
-    // Usa uma abordagem que evita pointer arithmetic
-    int sensorValue  = 0;           // Inicializa o valor do sensor
-    sensorValues_[i] = sensorValue; // Atribui o valor
+  // Lê os valores dos sensores do array sensorValues_
+  for(size_t i = 0; i < sensorQuantity_; i++) {
+    // Lê o valor real do sensor do array
+    int sensorValue = sensorValues_[i];
 
     // Aplica a mesma lógica do QTRwithMUX::read_all()
     if(sensorValue > 200) {
@@ -150,7 +147,7 @@ float PathController::getLinePosition() {
  * atual da linha. Este método converte a posição da linha em um ângulo
  * para correção de direção usando geometria circular.
  *
- * @return Ângulo de desvio em radianos (-π/2 a π/2)
+ * @return Ângulo de desvio em graus (-90° a 90°)
  */
 float PathController::getLineAngle() {
   // Obtém a posição atual da linha usando o método getLinePosition
@@ -173,14 +170,14 @@ float PathController::getLineAngle() {
                       (static_cast<float>(sensorToCenter_) / radiusSensor_);
 
   // Evita divisão por zero
-  if(fabsf(denominator) < 1e-6F) {
+  if(fabsf(denominator) < RobotEnv::EPSILON_TOLERANCE) {
     return 0.0F;
   }
 
   float angleWithCenter = atanf(sinf(angleRadius) / denominator);
 
-  // Retorna o ângulo em radianos
-  return angleWithCenter;
+  // Converte o ângulo de radianos para graus e retorna
+  return angleWithCenter * 180.0F / M_PI;
 }
 
 /**
