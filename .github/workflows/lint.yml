@@ -34,7 +34,7 @@ jobs:
       - name: Fix line endings
         run: |
           # Converte line endings para LF (Unix) para evitar problemas com clang-format
-          find src/ -name "*.hpp" -o -name "*.cpp" | xargs dos2unix
+          find src/ -name "*.hpp" -o -name "*.cpp" | xargs sed -i 's/\r$//'
           echo "Line endings converted to LF"
       - uses: cpp-linter/cpp-linter-action@main
         id: linter

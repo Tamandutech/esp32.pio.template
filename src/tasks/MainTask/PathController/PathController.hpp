@@ -33,7 +33,7 @@ private:
 };
 
 PathController::PathController(PathControllerParamSchema &param)
-    : constants_(param.constants), sensorQuantity_(param.sensorQuantity),
+    : sensorQuantity_(param.sensorQuantity), constants_(param.constants),
       integralSummation_(0.0F), lastError_(0.0F) {}
 
 float PathController::getLinePosition() { return 0.0F; }
