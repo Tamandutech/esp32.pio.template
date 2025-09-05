@@ -41,3 +41,4 @@ SpacesInAngles: false
 SpaceInEmptyParentheses: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
+Cpp11BracedListStyle: true
