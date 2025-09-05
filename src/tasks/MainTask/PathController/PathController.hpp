@@ -26,12 +26,12 @@ struct PathControllerConstants {
  * sensores.
  */
 struct PathControllerParamSchema {
-  const int sensorQuantity; // Quantidade de sensores de linha
-  const int *sensorValues;  // Ponteiro para array de valores dos sensores
   const PathControllerConstants constants; // Constantes do controlador PID
-  const float maxAngle;                    // Ângulo máximo em graus
-  const uint16_t radiusSensor;             // Raio dos sensores
-  const uint16_t sensorToCenter;           // Distância do sensor ao centro
+  const int sensorQuantity;                // Quantidade de sensores de linha
+  const int *sensorValues;       // Ponteiro para array de valores dos sensores
+  const float maxAngle;          // Ângulo máximo em graus
+  const uint16_t radiusSensor;   // Raio dos sensores
+  const uint16_t sensorToCenter; // Distância do sensor ao centro
 };
 
 /**
@@ -78,8 +78,8 @@ private:
  * @param param Parâmetros de inicialização do controlador
  */
 PathController::PathController(PathControllerParamSchema &param)
-    : sensorQuantity_(param.sensorQuantity), sensorValues_(param.sensorValues),
-      constants_(param.constants),
+    : constants_(param.constants), sensorQuantity_(param.sensorQuantity),
+      sensorValues_(param.sensorValues),
       maxAngle_(param.maxAngle * M_PI / 180.0F), // Converte graus para radianos
       radiusSensor_(param.radiusSensor), sensorToCenter_(param.sensorToCenter),
       integralSummation_(0.0F), lastError_(0.0F), lastPosition_(0),
