@@ -52,9 +52,9 @@ public:
   float getPID();
 
 private:
-  const size_t sensorQuantity_; // Quantidade de sensores de linha
-  const int *sensorValues_;     // Ponteiro para array de valores dos sensores
   PathControllerConstants constants_; // Constantes do controlador PID
+  const size_t sensorQuantity_;       // Quantidade de sensores de linha
+  const int *sensorValues_; // Ponteiro para array de valores dos sensores
 
   // Parâmetros geométricos para cálculo do ângulo
   const float maxAngle_;          // Ângulo máximo em radianos
