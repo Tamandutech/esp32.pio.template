@@ -1,10 +1,10 @@
 #ifndef COMMUNICATION_TASK_HPP
 #define COMMUNICATION_TASK_HPP
 
-#include "context/UselessData.hpp"
+#include "context/GlobalData.hpp"
 
 struct CommunicationTaskParamSchema {
-  UselessData &uselessData;
+  GlobalData &globalData;
 };
 
 void communicationTaskLoop(void *params) {

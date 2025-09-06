@@ -4,8 +4,6 @@
 #include <atomic>
 #include <cmath>
 
-#include "context/UselessData.hpp"
-
 /**
  * @brief Estrutura que contém as constantes do controlador PID
  *

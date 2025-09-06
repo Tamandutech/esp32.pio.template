@@ -1,20 +1,20 @@
 #ifndef MOTOR_DRIVER_HPP
 #define MOTOR_DRIVER_HPP
 
-#include "context/UselessData.hpp"
+#include "context/GlobalData.hpp"
 
 class MotorDriver {
 public:
-  MotorDriver(UselessData &data);
+  MotorDriver(GlobalData &data);
 
   void pwmOutput(int32_t value);
   int32_t getPulse();
 
 private:
-  UselessData &data_;
+  GlobalData &data_;
 };
 
-MotorDriver::MotorDriver(UselessData &data) : data_(data) {}
+MotorDriver::MotorDriver(GlobalData &data) : data_(data) {}
 
 void MotorDriver::pwmOutput(int32_t value) {}
 

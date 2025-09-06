@@ -1,19 +1,19 @@
 #ifndef MAIN_TASK_HPP
 #define MAIN_TASK_HPP
 
-#include "context/UselessData.hpp"
+#include "context/GlobalData.hpp"
 
 #include "drivers/MotorDriver/MotorDriver.hpp"
 
 #include "tasks/MainTask/PathController/PathController.hpp"
 
 struct MainTaskParamSchema {
-  UselessData &uselessData;
+  GlobalData &globalData;
 };
 
 void mainTaskLoop(void *params) {
   MainTaskParamSchema *param = static_cast<MainTaskParamSchema *>(params);
-  MotorDriver *motorDriver   = new MotorDriver(param->uselessData);
+  MotorDriver *motorDriver   = new MotorDriver(param->globalData);
 
   // Array de valores dos sensores (placeholder - deve ser inicializado com
   // dados reais)

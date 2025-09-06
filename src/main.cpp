@@ -6,33 +6,33 @@
 #include "freertos/timers.h"
 
 // Context
+#include "context/GlobalData.hpp"
 #include "context/RobotEnv.hpp"
-#include "context/UselessData.hpp"
 // Non-volatile storage
 #include "storage/storage.hpp"
 // Tasks
 #include "tasks/CommunicationTask/CommunicationTask.hpp"
 #include "tasks/MainTask/MainTask.hpp"
 
-UselessData uselessData;
+GlobalData globalData;
 
 extern "C" {
 void app_main(void);
 }
 
 void app_main() {
-  uselessData.randomNumber.store(10, std::memory_order_relaxed);
-  uselessData.randomChar.store('b', std::memory_order_relaxed);
-  uselessData.randomFloat.store(20.0F, std::memory_order_relaxed);
-  uselessData.randomBool.store(true, std::memory_order_relaxed);
+  globalData.randomNumber.store(10, std::memory_order_relaxed);
+  globalData.randomChar.store('b', std::memory_order_relaxed);
+  globalData.randomFloat.store(20.0F, std::memory_order_relaxed);
+  globalData.randomBool.store(true, std::memory_order_relaxed);
 
-  Storage::write(uselessData.randomNumber.load(std::memory_order_relaxed));
-  Storage::write(uselessData.randomChar.load(std::memory_order_relaxed));
-  Storage::write(uselessData.randomFloat.load(std::memory_order_relaxed));
-  Storage::write(uselessData.randomBool.load(std::memory_order_relaxed));
+  Storage::write(globalData.randomNumber.load(std::memory_order_relaxed));
+  Storage::write(globalData.randomChar.load(std::memory_order_relaxed));
+  Storage::write(globalData.randomFloat.load(std::memory_order_relaxed));
+  Storage::write(globalData.randomBool.load(std::memory_order_relaxed));
 
-  MainTaskParamSchema mainTaskParam                   = {uselessData};
-  CommunicationTaskParamSchema communicationTaskParam = {uselessData};
+  MainTaskParamSchema mainTaskParam                   = {globalData};
+  CommunicationTaskParamSchema communicationTaskParam = {globalData};
 
   // Task
   // 1 word = 4 bytes
