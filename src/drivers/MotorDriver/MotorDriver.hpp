@@ -7,7 +7,7 @@ class MotorDriver {
 public:
   MotorDriver(GlobalData &data);
 
-  void pwmOutput(int32_t value);
+  void    pwmOutput(int32_t value);
   int32_t getPulse();
 
 private:

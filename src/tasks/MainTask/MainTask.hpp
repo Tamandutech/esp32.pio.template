@@ -13,7 +13,8 @@ struct MainTaskParamSchema {
 
 void mainTaskLoop(void *params) {
   MainTaskParamSchema *param = static_cast<MainTaskParamSchema *>(params);
-  MotorDriver *motorDriver   = new MotorDriver(param->globalData);
+
+  MotorDriver *motorDriver = new MotorDriver(param->globalData);
 
   // Array de valores dos sensores (placeholder - deve ser inicializado com
   // dados reais)

@@ -31,7 +31,7 @@ void app_main() {
   Storage::write(globalData.randomFloat.load(std::memory_order_relaxed));
   Storage::write(globalData.randomBool.load(std::memory_order_relaxed));
 
-  MainTaskParamSchema mainTaskParam                   = {globalData};
+  MainTaskParamSchema          mainTaskParam          = {globalData};
   CommunicationTaskParamSchema communicationTaskParam = {globalData};
 
   // Task

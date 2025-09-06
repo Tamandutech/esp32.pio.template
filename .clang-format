@@ -3,9 +3,9 @@ Language: Cpp
 IndentWidth: 2
 AlignAfterOpenBracket: Align
 AlignArrayOfStructures: Left
-AlignConsecutiveAssignments: AcrossComments
+AlignConsecutiveAssignments: Consecutive
 AlignConsecutiveBitFields: AcrossComments
-AlignConsecutiveDeclarations: None
+AlignConsecutiveDeclarations: Consecutive
 AlignConsecutiveMacros: AcrossComments
 AlignEscapedNewlines: DontAlign
 AlignOperands: AlignAfterOperator

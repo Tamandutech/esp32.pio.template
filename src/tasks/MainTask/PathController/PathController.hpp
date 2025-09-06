@@ -25,9 +25,9 @@ struct PathControllerConstants {
  */
 struct PathControllerParamSchema {
   const PathControllerConstants constants; // Constantes do controlador PID
-  const size_t sensorQuantity;             // Quantidade de sensores de linha
-  const int *sensorValues;       // Ponteiro para array de valores dos sensores
-  const float maxAngle;          // Ângulo máximo em graus
+  const size_t   sensorQuantity;           // Quantidade de sensores de linha
+  const int     *sensorValues;   // Ponteiro para array de valores dos sensores
+  const float    maxAngle;       // Ângulo máximo em graus
   const uint16_t radiusSensor;   // Raio dos sensores
   const uint16_t sensorToCenter; // Distância do sensor ao centro
 };
@@ -51,11 +51,12 @@ public:
 
 private:
   PathControllerConstants constants_; // Constantes do controlador PID
+
   const size_t sensorQuantity_;       // Quantidade de sensores de linha
-  const int *sensorValues_; // Ponteiro para array de valores dos sensores
+  const int   *sensorValues_; // Ponteiro para array de valores dos sensores
 
   // Parâmetros geométricos para cálculo do ângulo
-  const float maxAngle_;          // Ângulo máximo em radianos
+  const float    maxAngle_;       // Ângulo máximo em radianos
   const uint16_t radiusSensor_;   // Raio dos sensores
   const uint16_t sensorToCenter_; // Distância do sensor ao centro
 
@@ -64,7 +65,7 @@ private:
 
   // Rastreamento do estado dos sensores
   uint32_t lastPosition_; // Última posição calculada da linha
-  bool onLine_;           // Indica se o robô está sobre a linha
+  bool     onLine_;       // Indica se o robô está sobre a linha
 };
 
 /**
